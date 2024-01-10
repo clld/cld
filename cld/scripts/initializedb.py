@@ -1,6 +1,7 @@
 import itertools
 import collections
 
+from sqlalchemy.orm import joinedload
 from clldutils.misc import nfilter
 from clldutils.color import qualitative_colors
 from clld.cliutil import Data, bibtex2source
@@ -8,6 +9,7 @@ from clld.db.meta import DBSession
 from clld.db.models import common
 from clld.lib import bibtex
 from clld_glottologfamily_plugin.util import load_families
+from pyglottolog import Glottolog
 
 from pycldf import Sources
 
@@ -34,6 +36,11 @@ def main(args):
 
     )
 
+    for ma in Glottolog(args.glottolog).macroareas.values():
+        data.add(
+            models.Macroarea, ma.name,
+            id=ma.id, name=ma.name, description=ma.description, jsondata=ma.geojson)
+
     contrib = data.add(
         common.Contribution,
         None,
@@ -51,7 +58,7 @@ def main(args):
             latitude=lang['latitude'],
             longitude=lang['longitude'],
             glottocode=lang['glottocode'],
-            macroarea=lang['Macroarea'],
+            macroarea_obj=data['Macroarea'][lang['Macroarea']],
         )
 
     for rec in bibtex.Database.from_file(args.cldf.bibpath, lowercase=True):
@@ -136,3 +143,14 @@ def prime_cache(args):
     This procedure should be separate from the db initialization, because
     it will have to be run periodically whenever data has been updated.
     """
+    doctypes = {p.pk: p.id for p in DBSession.query(common.Parameter)}
+    match = dict(
+        has_grammar={'grammar', 'grammar_sketch'},
+        has_dictionary={'dictionary', 'wordlist'},
+        has_text={'text', 'new_testament'},
+    )
+    for lang in DBSession.query(models.Variety).options(joinedload(common.Language.valuesets)):
+        types = {doctypes[vs.parameter_pk] for vs in lang.valuesets}
+        for attr, ids in match.items():
+            if ids.intersection(types):
+                setattr(lang, attr, True)

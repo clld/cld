@@ -5,9 +5,12 @@ from clld.interfaces import IMapMarker, IValueSet, IValue, IDomainElement
 from clld.web.icon import MapMarker
 from clldutils.svg import pie, icon, data_url
 from clld_glottologfamily_plugin import util
+from clld.web import app
 
 # we must make sure custom models are known at database initialization!
 from cld import models
+from cld import interfaces
+from cld import views
 
 
 class LanguageByFamilyMapMarker(util.LanguageByFamilyMapMarker):
@@ -29,6 +32,7 @@ def main(global_config, **settings):
     """
     config = Configurator(settings=settings)
     config.include('clld.web.app')
+    config.register_resource('macroarea', models.Macroarea, interfaces.IMacroarea, with_index=True)
 
     config.registry.registerUtility(LanguageByFamilyMapMarker(), IMapMarker)
 
