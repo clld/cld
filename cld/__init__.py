@@ -15,15 +15,16 @@ from cld import views
 
 class LanguageByFamilyMapMarker(util.LanguageByFamilyMapMarker):
     def __call__(self, ctx, req):
-
-        if IValueSet.providedBy(ctx):
-            c = collections.Counter([v.domainelement.jsondata['color'] for v in ctx.values])
-            return data_url(pie(*list(zip(*[(v, k) for k, v in c.most_common()])), **dict(stroke_circle=True)))
-        if IDomainElement.providedBy(ctx):
-            return data_url(icon(ctx.jsondata['color'].replace('#', 'c')))
-        if IValue.providedBy(ctx):
-            return data_url(icon(ctx.domainelement.jsondata['color'].replace('#', 'c')))
-
+        try:
+            if IValueSet.providedBy(ctx):
+                c = collections.Counter([v.domainelement.jsondata['color'] for v in ctx.values])
+                return data_url(pie(*list(zip(*[(v, k) for k, v in c.most_common()])), **dict(stroke_circle=True)))
+            if IDomainElement.providedBy(ctx):
+                return data_url(icon(ctx.jsondata['color'].replace('#', 'c')))
+            if IValue.providedBy(ctx):
+                return data_url(icon(ctx.domainelement.jsondata['color'].replace('#', 'c')))
+        except AttributeError:
+            pass
         return super(LanguageByFamilyMapMarker, self).__call__(ctx, req)
 
 
