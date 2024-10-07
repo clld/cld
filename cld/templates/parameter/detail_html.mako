@@ -4,20 +4,6 @@
 <%block name="title">${_('Parameter')} ${ctx.name}</%block>
 
 
-<div class="span4" style="float: right; margin-top: 1em;">
-    <%util:well title="Values">
-        <table class="table table-condensed">
-            % for de in ctx.domain:
-            <tr>
-                <td>${h.map_marker_img(req, de)}</td>
-                <td>${de.name}</td>
-                <td>${de.description}</td>
-                <td class="right">${len(de.values)}</td>
-            </tr>
-            % endfor
-        </table>
-    </%util:well>
-</div>
 
 
 <h2>${_('Parameter')} ${ctx.name}</h2>
@@ -27,8 +13,5 @@
 % endif
 
 <div style="clear: both"/>
-% if map_ or request.map:
-${(map_ or request.map).render()}
-% endif
 
-${request.get_datatable('values', h.models.Value, parameter=ctx).render()}
+${request.get_datatable('valuesets', h.models.ValueSet, parameter=ctx).render()}

@@ -5,42 +5,41 @@
 
 <h2>${_('Language')} ${ctx.name}</h2>
 
-% if ctx.glottocode == 'mans1258':
 
-<ul>
-<li><a href="https://uralic.clld.org/languages/26">UraTyp</a></li>
-<li><a href="https://eurphon.info/languages/html?lang_id=86">EURPhon</a></li>
-<li><a href="https://lexibank.clld.org/languages/northeuralex-mns">Lexibank</a></li>
-<li><a href="http://northeuralex.org/languages/mns">NorthEuralex</a></li>
-<li><a href="https://phoible.org/inventories/view/2475">PHOIBLE</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Mansi_language">Wikipedia on Mansic - the group</a></li>
-<li><a href="http://www.language-archives.org/language/mns">OLAC</a></li>
-<li><a href="https://archive.mpi.nl/tla/islandora/object/tla%3A1839_1A8B1F59_8FDC_4D88_9EC0_A73C3726D36C">TLA</a></li>
-<li><a href="https://endangeredlanguages.com/lang/8529">ElCat</a></li>
-<li><a href="https://d-place.org/society/ec15">D-PLACE</a></li>
-<li><a href="https://www.elararchive.org/dk0033/">ELAR</a></li>
-<li><a href="https://glottolog.org/resource/languoid/id/mans1258">Glottolog</a></li>
-</ul>
-    
-% elif ctx.glottocode == 'stan1295':
+<div class="tabbable">
+    <ul class="nav nav-tabs">
+        <li class="reference"><a href="#reference" data-toggle="tab">References</a></li>
+        <li class="active datapoint"><a href="#datapoint" data-toggle="tab">Data Points</a></li>
+        <li class="resource"><a href="#resource" data-toggle="tab">Resources</a></li>
+        <li class="source"><a href="#source" data-toggle="tab">Sources</a></li>
+    </ul>
+    <div class="tab-content" style="overflow: visible;">
+        <div id="reference" class="tab-pane reference">
+            ${request.get_datatable('valuesets', h.models.ValueSet, language=ctx).render()}
+        </div>
+        <div id="datapoint" class="tab-pane active datapoint">
+            ${request.get_datatable('values', h.models.Value, language=ctx).render()}
+        </div>
+        <div id="resource" class="tab-pane resource">
+            ${request.get_datatable('contributions', h.models.Contribution, language=ctx).render()}
+        </div>
+        <div id="source" class="tab-pane source">
+            ${request.get_datatable('sources', h.models.Source, language=ctx).render()}
+        </div>
+    </div>
+    <script>
+$(document).ready(function() {
+    if (location.hash !== '') {
+        $('a[href="#' + location.hash.substr(2) + '"]').tab('show');
+    }
+    return $('a[data-toggle="tab"]').on('shown', function(e) {
+        return location.hash = 't' + $(e.target).attr('href').substr(1);
+    });
+});
+    </script>
+</div>
 
-<ul>
-<li><a href="http://northeuralex.org/languages/deu">NorthEuralex</a></li>
-<li><a href="https://lexibank.clld.org/languages/northeuralex-deu">Lexibank</a></li>
-<li><a href="https://phoible.org/languages/stan1295">Phoible</a></li>
-<li><a href="https://en.wikipedia.org/wiki/German_language">Wikipedia on German</a></li>
-<li><a href="http://www.language-archives.org/language/deu">OLAC</a></li>
-<li><a href="https://d-place.org/society/CCMCstan1295">D-Place</a></li>
-<li><a href="https://lapsyd.huma-num.fr/lapsyd/index.php?data=view&code=99">LAPSyD</a></li>
-<li><a href="https://huggingface.co/models?language=de&sort=trending&search=german">Hugging Face</a></li>
-<li><a href="https://en.wikisource.org/wiki/An_Etymological_Dictionary_of_the_German_Language">WikiBook</a></li>
-<li><a href="https://iecor.clld.org/languages/german">IECore</a></li>
-<li><a href="https://glottolog.org/resource/languoid/id/stan1295">Glottolog</a></li>
-</ul>
 
-% endif
-
-${request.get_datatable('values', h.models.Value, language=ctx).render()}
 
 <%def name="sidebar()">
     <div class="well well-small">

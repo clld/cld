@@ -1,17 +1,18 @@
-# Translations template for cld.
+# English translations for PROJECT.
 # Copyright (C) 2024 ORGANIZATION
-# This file is distributed under the same license as the cld project.
+# This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: cld 0.0\n"
+"Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2024-10-07 14:07+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2024-10-07 12:52+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,41 +20,45 @@ msgstr ""
 
 #: cld/__init__.py:16
 msgid "Parameter"
-msgstr ""
+msgstr "Basic information type"
 
 #: cld/__init__.py:17
 msgid "Parameters"
-msgstr ""
+msgstr "Basic information types"
 
 #: cld/__init__.py:18
 msgid "Contribution"
-msgstr ""
+msgstr "Resource"
 
 #: cld/__init__.py:19
 msgid "Contributions"
-msgstr ""
+msgstr "Resources"
 
 #: cld/__init__.py:20
+#, fuzzy
+#| msgid "ValueSet"
 msgid "Value Set"
-msgstr ""
+msgstr "Reference"
 
 #: cld/__init__.py:21
+#, fuzzy
+#| msgid "ValueSets"
 msgid "Value Sets"
-msgstr ""
+msgstr "References"
 
 #: cld/__init__.py:22
 msgid "ValueSet"
-msgstr ""
+msgstr "Reference"
 
 #: cld/__init__.py:23
 msgid "ValueSets"
-msgstr ""
+msgstr "References"
 
 #: cld/__init__.py:24
 msgid "Value"
-msgstr ""
+msgstr "Data point"
 
 #: cld/__init__.py:25
 msgid "Values"
-msgstr ""
+msgstr "Data points"
 

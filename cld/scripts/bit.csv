@@ -1,0 +1,51 @@
+ID,Domain,Parameter,Examples,Note
+01,Phonology,Sound Inventory,"PHOIBLE",Data on the sound inventory of a language.
+02,Phonology,Phonotactics,"Phonotacticon",Data on the phonotactics of a language.
+03,Phonology,Structural Data,"WALS, APICS", Data that looks into structural properties of the phonology of a language.
+04,Morphology,Paradigms,"Universal Morphology",Data presenting paradigms of a language.
+05,Morphology,Derivation,"Pepper's binomial compound database.",Data concentrating on certain aspects of derivation in a language.
+06,Morphology,Structural Data,,Data on morphology that concentrates in individual structural properties.
+07,Grammar,Reference Grammar,,A complete grammar that covers a language in full.
+08,Grammar,Grammar Sketch,,A short grammar that covers the basic aspects.
+09,Grammar,Learner Grammar,,A grammar intended for people to learn a language.
+10,Grammar,Structural Data,,Any data that concentrates on grammatical features of a language.
+11,Lexicon,Dictionary,"Dictionaria, Open Multilingual Wordnet",A list of words in the target language with sense descriptions in the same or another language.
+12,Lexicon,Glossary,,A list of words in the target language with short glosses that illustrate thee words meanings.
+13,Lexicon,Basic Vocabulary,"Swadesh List, ASJP, GLD, ToB",Any wordlist that targets basic concepts.
+14,Lexicon,Numerals,"UniNum",A list of numerals in the language.
+15,Lexicon,Kinship,"Kinbank",A list of kinship terms in the language.
+16,Lexicon,Wordlist,"IDS",A large wordlist of more than 500 items that is not necessarily targeting only the basic lexicon.
+17,Lexicon,Colexifications,"CLICS",A list of colexifications for the target language.
+18,Lexicon,Color Terms,"WCS",A list of color terms for the target language.
+19,Lexicon,Etymologies,ACD,Any collection of etymologies that involve reflexes from the target language.
+20,Lexicon,Borrowings,WOLD,A wordlist for a given language in which borrowings from other languages are indicated.
+21,Lexicon,Structural Data,"WALS",Any kind of structural data that targets the lexicon.
+22,Text,Interlinear-Glossed Texts,"ODIN,IMTVault",A text collection that adheres to IGT standards.
+23,Text,Treebank,"Universal Dependencies",A text collection that has an annotation layer that reflects syntactic structures.
+24,Text,Time-Aligned Corpus,"Doreco",A corpus in which sound recordings are aligned with the transcription.
+25,Text,Comparable Text Genres,,"A collection of texts that reflect a genre that is comparable across languages (e.g., newspapers)."
+26,Text,Parallel Texts,"Bible Corpus, Frog Story, Human Rights Declaration",A collection of texts translated into multiple languages.
+27,Text,Translated Texts,,A collection of texts in a source language with translations in another language.
+28,Text,Annotated Text Collection,,Any text collection with an additional layer of annotation.
+29,Text,Raw Text Collection,,Any raw text collection for the target language.
+30,Text,Structural Data,,Any kind of structural data for the target language.
+31,Machine Learning,Embeddings,,Any kind of embeddings derived for the language from a corpus collection.
+32,Machine Learning,Language Models,,Language models for the language that are available for fine-tuning.
+33,Demography,Population Size,,The number of language users at a given point in time.
+34,Demography,Endangerment,,The endangerment status of a language according to sources.
+35,Demography,Structural Data,,Any structural data concerning the demography of a language.
+36,Socioculture,Writing System,,The writing system(s) primarily used to represent the language variety in written communication.
+37,Socioculture,Structural Data,"D-Place",Structural data on socio-cultural aspects of a language.
+38,Psychology,Norm Data,"NoRaRe",Norm and rating data for a given language.
+39,Psychology,Structural Data,,Any kind of additional structural data that targets aspects of psychology or psycholinguistics.
+40,Geography,Coordinates,,The geographic center or centers where the language is spoken.
+41,Geography,Countries,,Countries in which the language is used.
+42,Geography,Macroareas,,Major areas in which the language is used.
+43,Geography,Areas,,Areas (in the form of polygons) where the language is used.
+44,Geography,Structural Data,,Any kind of structural data that relates to the geography.
+45,Genealogy,Linguistic Areas,,Areas to which a language has been assigned to.
+46,Genealogy,Affiliation,,Information on the language family of a language.
+47,Genealogy,Phylogeny,,Information on phylogenies in which the language occurs.
+48,Genealogy,Contact Languages,,Information on languages that have historically influenced the language in question.
+49,Basic,Knowledge Wikipedia,,Wikipedia descriptions of the language variety in question.
+50,Basic Knowledge,Wikidata,,Wikidata records of the language variety in question.

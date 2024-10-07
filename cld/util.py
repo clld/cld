@@ -1,5 +1,6 @@
 from clld.web.maps import SelectedLanguagesMap
 
+from cld import models
 from cld.maps import MacroareaMap
 from cld.maps import MacroareaLanguagesGeoJson
 

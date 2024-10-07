@@ -1,3 +1,18 @@
 td.grammar {color: #4477AA; font-weight: bold}
 td.dictionary {color: #DDCC77; font-weight: bold}
 td.text {color: #CC6677; font-weight: bold}
+
+/*
+.reference {background-color: #9f1e2c !important;}
+.datapoint {background-color: #4e78a7 !important;}
+.resource {background-color: #628d3f !important;}
+.source {background-color: #ffd53d !important;}
+*/
+.reference {background-color: rgba(159, 30, 44, .2) !important;}
+.datapoint {background-color: rgba(78, 120, 167, .2) !important;}
+.resource {background-color: rgba(98, 141, 63, .2) !important;}
+.source {background-color: rgba(255, 213, 61, .2) !important;}
+
+.nav {margin-bottom: 0px !important;}
+.nav-tabs > .active > a {background-color: initial;}
+div.tab-pane {padding: 10px}

@@ -12,6 +12,18 @@ from cld import models
 from cld import interfaces
 from cld import views
 
+_ = lambda s: s
+_('Parameter')
+_('Parameters')
+_('Contribution')
+_('Contributions')
+_('Value Set')
+_('Value Sets')
+_('ValueSet')
+_('ValueSets')
+_('Value')
+_('Values')
+
 
 class LanguageByFamilyMapMarker(util.LanguageByFamilyMapMarker):
     def __call__(self, ctx, req):
@@ -34,6 +46,7 @@ def main(global_config, **settings):
     config = Configurator(settings=settings)
     config.include('clld.web.app')
     config.register_resource('macroarea', models.Macroarea, interfaces.IMacroarea, with_index=True)
+    config.register_resource('database', models.Database, interfaces.IDatabase, with_index=True)
 
     config.registry.registerUtility(LanguageByFamilyMapMarker(), IMapMarker)
 
