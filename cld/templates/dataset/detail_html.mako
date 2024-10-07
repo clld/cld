@@ -11,6 +11,6 @@
     in Glottolog:
 </p>
 <ul>
-    <li><a href="${req.route_url('language', id='mans1258')}">Northern Mansi</a> - a small uralic language from Northern Eurasia</li>
-    <li><a href="${req.route_url('language', id='stan1295')}">Standard German</a> - a national language of a Western European country</li>
+    <li><a href="${req.route_url('language', id='mans1258')}">Northern Mansi</a> - a small uralic language and</li>
+    <li><a href="${req.route_url('language', id='phom1236')}">Phom Naga</a> - a sino-tibetan language.</li>
 </ul>

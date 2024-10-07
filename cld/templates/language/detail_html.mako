@@ -43,8 +43,14 @@ $(document).ready(function() {
 
 <%def name="sidebar()">
     <div class="well well-small">
-        <h3>Macroarea</h3>
-        <p>${h.link(req, ctx.macroarea_obj)}</p>
+        ${request.map.render()}
+        ${h.format_coordinates(ctx)}
+
+        <dl>
+            <dt>Glottocode:</dt>
+            <dd>${ctx.glottocode}</dd>
+        <dt>Macroarea:</dt>
+        <dd>${h.link(req, ctx.macroarea_obj)}</dd>
+        </dl>
     </div>
-    ${util.language_meta()}
 </%def>
