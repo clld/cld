@@ -36,7 +36,8 @@ class Macroarea(Base, common.IdNameDescriptionMixin):
 # Database as custom resource!
 @implementer(cld.interfaces.IDatabase)
 class Database(Base, common.IdNameDescriptionMixin):
-    pass
+    domains = Column(Unicode)
+    dpcount = Column(Integer)
 
 
 # ValueSet = References  9f1e2c

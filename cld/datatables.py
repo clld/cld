@@ -78,6 +78,20 @@ class References(Valuesets):
                         model_col=common.Contribution.name,
                         get_object=lambda i: i.contribution),
             ]
+        if self.contribution:
+            return [
+                LinkCol(self, 'id'),
+                LinkCol(self,
+                        'language',
+                        sTitle=self.req.translate('Language'),
+                        model_col=common.Language.name,
+                        get_object=lambda i: i.language),
+                LinkCol(self,
+                        'parameter',
+                        sTitle=self.req.translate('Parameter'),
+                        model_col=common.Parameter.name,
+                        get_object=lambda i: i.parameter),
+            ]
 
         return [
             Col(self,
@@ -195,6 +209,15 @@ class CLDSources(Sources):
         return query
 
 
+class Databases(DataTable):
+    def col_defs(self):
+        return [
+            LinkCol(self, 'name'),
+            Col(self, 'dpcount', sTitle='#Data points'),
+            Col(self, 'domains'),
+        ]
+
+
 def includeme(config):
     """register custom datatables"""
     config.register_datatable('sources', CLDSources)
@@ -204,3 +227,4 @@ def includeme(config):
     config.register_datatable('valuesets', References)
     config.register_datatable('languages', CldLanguages)
     config.register_datatable('macroareas', Macroareas)
+    config.register_datatable('databases', Databases)

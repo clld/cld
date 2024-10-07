@@ -163,3 +163,7 @@ def prime_cache(args):
 
     for lang in DBSession.query(models.Variety).options(joinedload(common.Language.valuesets)):
         lang.bitcount = len(set(vs.parameter_pk for vs in lang.valuesets))
+
+    for db in DBSession.query(models.Database).options(joinedload(models.Database.datapoints)):
+        db.domains = ' / '.join(sorted(set(dp.valueset.parameter.knowledgedomain for dp in db.datapoints)))
+        db.dpcount = len(db.datapoints)
