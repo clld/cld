@@ -5,10 +5,13 @@
 
 <h2>Reference ${h.link(request, ctx.language)}/${h.link(request, ctx.parameter)}</h2>
 
-<div class="alert alert-info">
-    References describe basic information types found in resources. If the information is available
-    in structured form in a database, this will be recorded as data point associated with the
-    reference.
+<div class="alert alert-warning">
+    <p>References describe instances of <a href="${req.route_url('parameters')}">basic information types</a>
+        for particular languages found in resources. If the information is available
+        in structured form in a database, this will be recorded as data point associated with the
+        reference.</p>
+    <p>References without associated data points signal the potential (or the need) for further
+    standardisation by extracting the information into structured data.</p>
 </div>
 
 % if ctx.values:

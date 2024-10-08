@@ -8,6 +8,11 @@
 
 <h2>${_('Parameter')} ${ctx.name}</h2>
 
+<div class="alert alert-warning">
+    <a href="${req.route_url('parameters')}">Basic information types</a> are well understood types
+    of linguistic data which are useful for comparative study of languages.
+</div>
+
 % if ctx.description:
 <p>${ctx.description}</p>
 % endif

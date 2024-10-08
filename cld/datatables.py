@@ -94,6 +94,7 @@ class References(Valuesets):
             ]
 
         return [
+            LinkCol(self, 'id'),
             Col(self,
                 'domain',
                 choices=get_distinct_values(models.Bit.knowledgedomain),

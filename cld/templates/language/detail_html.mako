@@ -5,6 +5,10 @@
 
 <h2>${_('Language')} ${ctx.name}</h2>
 
+<div class="alert alert-warning">
+    <em>Languages</em> in this catalog are defined as
+    <a href="https://glottolog.org/glottolog/glottologinformation">spoken L1 languages in Glottolog</a>.
+</div>
 
 <div class="tabbable">
     <ul class="nav nav-tabs">
