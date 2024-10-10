@@ -14,16 +14,26 @@
 </div>
 
 <dl class="dl-horizontal">
-    <dt>Language:</dt>
-    <dd>${h.link(request, ctx.valueset.language)}</dd>
     <dt>${_('Parameter')}:</dt>
-    <dd>${h.link(request, ctx.valueset.parameter)}</dd>
+    <dd>${h.link(request, ctx.bit)}</dd>
     <dt>Database:</dt>
     <dd>${h.link(request, ctx.database)}</dd>
     <dt class="source">Source:</dt>
     <dd>${h.link(request, ctx.source)}</dd>
     <dt>Location:</dt>
     <dd><a href="${ctx.location}">${ctx.location}</a></dd>
+    <dt class="reference">Reference:</dt>
+    <dd>
+        <p>${h.link(request, ctx.valueset)}</p>
+        <dl class="dl-horizontal">
+            <dt>Language:</dt>
+            <dd>${h.link(request, ctx.valueset.language)}</dd>
+            <dt>${_('Parameter')}:</dt>
+            <dd>${h.link(request, ctx.valueset.parameter)}</dd>
+            <dt class="resource">${_('Resource')}:</dt>
+            <dd>${h.link(request, ctx.valueset.contribution)}</dd>
+        </dl>
+    </dd>
 </dl>
 
 <div class="alert alert-warning">
