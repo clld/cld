@@ -123,29 +123,47 @@ class Datapoints(Values):
         )
 
         if self.language:
-            query = query.join(common.ValueSet.parameter)
+            query = query.join(models.Datapoint.bit)
             return query.filter(common.ValueSet.language_pk == self.language.pk)
 
         if self.parameter:
-            query = query.join(common.ValueSet.language)
-            return query.filter(common.ValueSet.parameter_pk == self.parameter.pk)
+            query = query.join(common.ValueSet.language).join(models.Datapoint.bit)
+            return query.filter(models.Datapoint.bit_pk == self.parameter.pk)
 
         if self.contribution:
-            query = query.join(common.ValueSet.parameter)
+            query = query.join(models.Datapoint.bit)
             return query.filter(common.ValueSet.contribution_pk == self.contribution.pk)
 
         if self.database:
             return query\
-                .join(common.ValueSet.parameter)\
+                .join(models.Datapoint.bit)\
                 .join(models.Datapoint.database).filter(models.Database.pk == self.database.pk)
         return query
 
     def col_defs(self):
+        if self.parameter:
+            return [
+                LinkCol(
+                    self,
+                    'language',
+                    sTitle=self.req.translate('Language'),
+                    model_col=common.Language.name,
+                    get_object=lambda i: i.valueset.language),
+                LinkCol(
+                    self,
+                    'datapoint',
+                ),
+                LinkCol(
+                    self,
+                    'database',
+                    get_object=lambda i: i.database,
+                )
+            ]
         res = [
             Col(self,
                 'domain',
                 choices=get_distinct_values(models.Bit.knowledgedomain),
-                get_object=lambda i: i.valueset.parameter,
+                get_object=lambda i: i.bit,
                 model_col=models.Bit.knowledgedomain,
             ),
             LinkCol(
@@ -153,7 +171,7 @@ class Datapoints(Values):
                 'parameter',
                 sTitle=self.req.translate('Parameter'),
                 model_col=common.Parameter.name,
-                get_object=lambda i: i.valueset.parameter),
+                get_object=lambda i: i.bit),
             LinkCol(
                 self, 'value', get_object=lambda i: i),
         ]
@@ -182,7 +200,8 @@ class Bits(Parameters):
                 'parameter',
                 sTitle=self.req.translate('Parameter'),
             ),
-            Col(self, 'langs', sTitle='#Languages', model_col=models.Bit.lcount),
+            Col(self, 'langs', sTitle='#Languages with reference', model_col=models.Bit.lcount),
+            Col(self, 'langs', sTitle='#Languages with datapoint', model_col=models.Bit.ldpcount),
             Col(self, 'description'),
         ]
 

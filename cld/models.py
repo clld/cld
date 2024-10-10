@@ -56,6 +56,8 @@ class Datapoint(CustomModelMixin, common.Value):
     source_pk = Column(Integer, ForeignKey('source.pk'))
     source = relationship(common.Source, backref='resources')
     location = Column(Unicode)
+    bit_pk = Column(Integer, ForeignKey('parameter.pk'))
+    bit = relationship(common.Parameter, backref='datapoints')
 
 
 # Contribution = Resources  628d3f
@@ -80,3 +82,4 @@ class Bit(CustomModelMixin, common.Parameter):
     pk = Column(Integer, ForeignKey('parameter.pk'), primary_key=True)
     knowledgedomain = Column(Unicode)
     lcount = Column(Integer)
+    ldpcount = Column(Integer)

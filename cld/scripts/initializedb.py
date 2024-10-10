@@ -90,7 +90,7 @@ def main(args):
 
     for id_, lid, rid, bit in [
         ('riese2001_11_17', 'mans1258', 'riese2001', '01'),
-        ('romb1982', 'mans1258', 'romb1982', '16'),
+        ('romb1982', 'mans1258', 'romb1982', '11'),
         ('honkola2013', 'mans1258', 'honkola2013', '47'),
         ('bano2008_120_185_a', 'phom1236', 'bano2008', '01'),
         ('bano2008_120_185_b', 'phom1236', 'bano2008', '02'),
@@ -107,27 +107,32 @@ def main(args):
     ]:
         data.add(models.Database, id_, id=id_, name=name, description=desc)
 
-    for i, (refid, sid, dbid, url) in enumerate([
+    for i, (refid, sid, dbid, url, bitid) in enumerate([
         ('bano2008_120_185_b',
          '139594',
          'phonotacticon',
-         'https://doi.org/10.5281/zenodo.10623743'),
+         'https://doi.org/10.5281/zenodo.10623743',
+         '02'),
         ('riese2001_11_17',
          '103074',
          'phoible',
-         'https://phoible.org/inventories/view/2475#tipa'),
+         'https://phoible.org/inventories/view/2475#tipa',
+         '01'),
         ('riese2001_11_17',
          '103074',
          'europhon',
-         'https://eurphon.info/languages/html?lang_id=86'),
+         'https://eurphon.info/languages/html?lang_id=86',
+         '01'),
         ('romb1982',
          '550166',
          'northeuralex',
-         'http://northeuralex.org/languages/mns'),
+         'http://northeuralex.org/languages/mns',
+         '16'),
         ('honkola2013',
          'Honkola2013',
          'dplace',
-         'https://d-place.org/phylogenys/honkola_et_al2013'),
+         'https://d-place.org/phylogenys/honkola_et_al2013',
+         '47'),
     ]):
         obj = data.add(
             models.Datapoint,
@@ -136,6 +141,7 @@ def main(args):
             valueset=data['Reference'][refid],
             source=data['Source'][sid],
             database=data['Database'][dbid],
+            bit=data['Bit'][bitid],
             location=url
         )
         obj.name = '{} {} for {} based on {}'.format(
@@ -160,6 +166,9 @@ def prime_cache(args):
     """
     for bit in DBSession.query(models.Bit).options(joinedload(common.Parameter.valuesets)):
         bit.lcount = len(set(vs.language_pk for vs in bit.valuesets))
+
+    for bit in DBSession.query(models.Bit).options(joinedload(models.Bit.datapoints)):
+        bit.ldpcount = len(set(dp.valueset.language_pk for dp in bit.datapoints))
 
     for lang in DBSession.query(models.Variety).options(joinedload(common.Language.valuesets)):
         lang.bitcount = len(set(vs.parameter_pk for vs in lang.valuesets))
