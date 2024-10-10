@@ -1,16 +1,10 @@
-import collections
-
 from clld.web.maps import Map, Layer
 from clld.db.meta import DBSession
 from clld.web.util.helpers import link
-from clldutils.svg import pie, data_url
 
 from clld.web.maps import GeoJsonSelectedLanguages, SelectedLanguagesMap
 
 from cld.models import Macroarea
-
-COLORS = collections.OrderedDict(
-    zip(['grammar', 'dictionary', 'text'], ['#4477AA', '#DDCC77', '#CC6677']))
 
 
 def feature(req, ma):
@@ -36,10 +30,4 @@ class MacroareaMap(Map):
 
 
 class MacroareaLanguagesGeoJson(GeoJsonSelectedLanguages):
-    def feature_properties(self, ctx, req, feature):
-        """paint icon"""
-        return {
-            'icon': data_url(pie(
-                [1, 1, 1],
-                [color if getattr(feature, 'has_' + attr) else '#ffffff' for attr, color in COLORS.items()])),
-            'language': feature}
+    pass
